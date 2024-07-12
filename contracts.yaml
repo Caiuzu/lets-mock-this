@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Blog API
+  description: API para gerenciar posts e comentários de um blog
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /posts:
+    get:
+      summary: Lista todos os posts
+      responses:
+        '200':
+          description: Um array de posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: Meu Post
+                    author:
+                      type: string
+                      example: Autor Exemplo
+    post:
+      summary: Cria um novo post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: Novo Post
+                author:
+                  type: string
+                  example: Autor Novo
+      responses:
+        '201':
+          description: Post criado com sucesso
